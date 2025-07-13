@@ -1,7 +1,10 @@
+val MAPS_API_KEY: String = project.findProperty("MAPS_API_KEY") as String? ?: ""
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    id("org.jetbrains.kotlin.plugin.serialization") version "1.9.0"
+    id ("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
 }
 
 android {
@@ -16,6 +19,8 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        resValue("string", "google_maps_key", MAPS_API_KEY)
+
     }
 
     buildTypes {
@@ -40,6 +45,13 @@ android {
 }
 
 dependencies {
+
+
+    // Google maps
+    implementation("com.google.android.gms:play-services-maps:19.2.0")
+    implementation("com.google.android.gms:play-services-location:21.3.0")
+    // Google maps for compose
+    implementation("com.google.maps.android:maps-compose:2.8.0")
 
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.9.0")
     implementation("androidx.navigation:navigation-compose:2.9.0")

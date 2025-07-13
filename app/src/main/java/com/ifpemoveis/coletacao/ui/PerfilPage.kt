@@ -21,11 +21,13 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.ifpemoveis.coletacao.ui.main.MainViewModel
 
 @SuppressLint("ContextCastToActivity")
 @Preview(showBackground = true)
 @Composable
-fun PerfilPage(modifier: Modifier = Modifier) {
+fun PerfilPage(viewModel: MainViewModel = MainViewModel()) {
+    val modifier = Modifier
     Column(
         modifier = modifier.fillMaxSize()
             .background(Color.Yellow)
