@@ -12,6 +12,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.foundation.border
+
 import androidx.compose.ui.tooling.preview.Preview
 
 import androidx.compose.ui.unit.sp
@@ -37,16 +39,7 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
-
-
-
-
-
-
-
-
-
-
+import com.ifpemoveis.coletacao.ui.theme.PegaPetsColors
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -60,30 +53,28 @@ fun SolicitaPage( viewModel: MainViewModel = MainViewModel()) {
 
 
 
-//    Scaffold(
-//        topBar = {
-//            TopAppBar(
-//                title = { Text("Registro de Cachorro Abandonado") },
-//                colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
-//                    containerColor = Color(0xFF6200EE),
-//                    titleContentColor = Color.White
-//                )
-//            )
-//        }
-//    ) { padding ->
+    Scaffold(
+        containerColor  = PegaPetsColors.TelaFundo  // <- COR DO FUNDO
+    ) { innerPadding ->
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(innerPadding)
+                .padding(24.dp) // espaço entre a borda e a borda da tela
+                .border(2.dp, PegaPetsColors.TelaBorda, shape = RoundedCornerShape(16.dp))
+                .padding(24.dp) // espaço interno
+        ) {
         Column(
-            modifier = modifier
-                .padding(16.dp)
-                .padding(16.dp)
-                .fillMaxSize(),
-            verticalArrangement = Arrangement.spacedBy(16.dp)
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.spacedBy(16.dp),
+            modifier = Modifier.fillMaxSize()
         ) {
 
             Button(
                 onClick = { /* mock: selecionar imagem */ },
                 modifier = Modifier.fillMaxWidth()
             ) {
-                Text("Selecionar Foto")
+                Text("Tirar Foto do Animal")
             }
 
             OutlinedTextField(
@@ -119,4 +110,4 @@ fun SolicitaPage( viewModel: MainViewModel = MainViewModel()) {
                 Text("Registrar")
             }
         }
-    }
+    }}}
